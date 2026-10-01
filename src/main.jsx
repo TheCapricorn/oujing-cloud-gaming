@@ -75,7 +75,7 @@ function App() {
             <button className="client-card" onClick={download}><Monitor size={34}/><b>Windows</b><small>Windows 10 及以上</small><i>立即下载 <ArrowRight size={15}/></i></button>
             <button className="client-card" onClick={download}><Apple size={34}/><b>macOS</b><small>macOS 12 及以上</small><i>立即下载 <ArrowRight size={15}/></i></button>
             <button className="client-card" onClick={download}><Smartphone size={34}/><b>Android</b><small>Android 10.0 及以上</small><i>扫码下载 <ArrowRight size={15}/></i></button>
-            <button className="client-card web-card" onClick={download}><span className="mini-qr"/><Globe2 size={29}/><b>H5 网页版</b><small>手机浏览器扫码体验</small><i>立即体验 <ArrowRight size={15}/></i></button>
+            <button className="client-card web-card" onClick={download}><Globe2 size={29}/><b>H5 网页版</b><small>手机浏览器扫码体验</small><i>立即体验 <ArrowRight size={15}/></i></button>
           </div>
         </div>
       </section>
