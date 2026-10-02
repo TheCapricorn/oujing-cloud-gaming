@@ -53,13 +53,15 @@ function App() {
     </header>
 
     <main id="top">
-      <section className="hero section">
-        <div className="hero-copy">
+      <section className="hero">
+        <div className="hero-inner section">
+          <div className="hero-copy">
           <div className="eyebrow"><Sparkles size={14}/> 新一代云端电竞平台</div>
           <h1>硬件不设限<br/><em>热爱，即刻上云</em></h1>
           <p>欧竞云电竞将旗舰游戏主机带到每一块屏幕。无需等待下载，无需昂贵设备，点击即刻进入你的主场。</p>
           <div className="hero-cta"><button className="download large" onClick={download}>立即下载客户端 <ArrowRight size={18}/></button><button className="text-button" onClick={() => go('plans')}>查看套餐 <ChevronDown size={16}/></button></div>
           <div className="trust-row"><span><ShieldCheck size={17}/> 安全稳定</span><span><Clock3 size={17}/> 按时计费</span><span><Cloud size={17}/> 云端存档</span></div>
+          </div>
         </div>
       </section>
 
