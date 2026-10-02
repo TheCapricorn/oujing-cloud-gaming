@@ -33,3 +33,7 @@ html,body{max-width:100%;overflow-x:clip}.hero-art{overflow:clip}
 /* Let the H5 card follow the same centered layout as the other platforms. */
 .web-card{padding-left:16px;align-items:center;text-align:center}.web-card>svg{position:static;margin-bottom:13px}.web-card i{justify-content:center}
 @media(max-width:760px){.web-card{padding-left:10px;align-items:center;text-align:center}.web-card>svg{position:static;margin-bottom:7px}.web-card i{justify-content:center}}
+
+/* Full-bleed hero artwork, served from the public static-assets directory. */
+.hero{isolation:isolate;grid-template-columns:minmax(0,540px) 1fr;padding:78px 62px;overflow:hidden;border:1px solid #6f79d43b;border-radius:22px;background-image:linear-gradient(90deg,#070914 0%,#070914e8 32%,#07091488 58%,#07091420 100%),url('/assets/cloud-esports-future-battlefield.png');background-position:center;background-size:cover;background-repeat:no-repeat;box-shadow:0 22px 70px #0005}.hero-copy{position:relative;z-index:1}.hero-copy>p{color:#c6cbe0}.hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0a0d1c20 45%,#070914bd 100%);pointer-events:none}
+@media(max-width:760px){.hero{grid-template-columns:1fr;min-height:570px;padding:88px 22px 62px;background-image:linear-gradient(90deg,#070914f2 0%,#070914c9 62%,#0709147a 100%),url('/assets/cloud-esports-future-battlefield.png');background-position:64% center;border-radius:17px}.hero-copy>p{color:#d0d5e8}.hero-art{display:none}}

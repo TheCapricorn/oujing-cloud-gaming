@@ -61,11 +61,6 @@ function App() {
           <div className="hero-cta"><button className="download large" onClick={download}>立即下载客户端 <ArrowRight size={18}/></button><button className="text-button" onClick={() => go('plans')}>查看套餐 <ChevronDown size={16}/></button></div>
           <div className="trust-row"><span><ShieldCheck size={17}/> 安全稳定</span><span><Clock3 size={17}/> 按时计费</span><span><Cloud size={17}/> 云端存档</span></div>
         </div>
-        <div className="hero-art" aria-label="欧竞云电竞设备展示">
-          <div className="orbit orbit-a"/><div className="orbit orbit-b"/>
-          <div className="game-window"><div className="window-top"><span/><span/><span/><b>OUJING · CLOUD CORE</b></div><div className="window-grid"/><div className="window-glow"/><div className="window-content"><div className="hud-label">READY / 100%</div><div className="character"><div className="helmet"/><div className="body"/><div className="arm"/></div><div className="reticle">+</div></div></div>
-          <div className="floating-chip chip-one"><Zap size={16}/><span>LOW LATENCY</span></div><div className="floating-chip chip-two"><Cpu size={16}/><span>RTX CLOUD</span></div>
-        </div>
       </section>
 
       <section className="download-section section">
