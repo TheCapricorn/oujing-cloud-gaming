@@ -9,7 +9,8 @@ import './styles.css'
 import { footerInfo } from './footer-info'
 import { billingRules } from './billing-info'
 
-const assetUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+const assetBaseUrl = (import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL).replace(/\/+$/, '')
+const assetUrl = (path) => `${assetBaseUrl}/${path.replace(/^\/+/, '').split('/').map(encodeURIComponent).join('/')}`
 
 const features = [
   { title: '满血性能', caption: '云端性能', text: 'RTX 级云端显卡，3A 大作也能拉满画质。', image: '/assets/ChatGPT 图像 2026年10月3日 10_15_09-1.png', alt: '旗舰显卡与云端服务器置于未来游戏城市中' },
@@ -61,7 +62,7 @@ function App() {
     </header>
 
     <main id="top">
-      <section className="hero">
+      <section className="hero" style={{ '--hero-image': `url("${assetUrl('/assets/cloud-esports-future-battlefield.png')}")` }}>
         <div className="hero-inner section">
           <div className="hero-copy">
             <div className="eyebrow"><Sparkles size={14} /> 新一代云端电竞平台</div>
