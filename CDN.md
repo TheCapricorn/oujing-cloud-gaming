@@ -2,17 +2,19 @@
 
 ## 当前配置
 
-图片域名：`https://round-forest-8996.szqmayday.workers.dev`（Cloudflare Workers）。
+开发、生产构建和 GitHub Pages 工作流默认使用站点本地图片（`public/assets/`）。GitHub Pages 构建会自动加上仓库子目录 `/oujing-cloud-gaming/`。
 
-`.env.production` 已配置这个域名，执行 `npm run build` 即生效。GitHub Pages 工作流也已设置同一默认值，可通过仓库变量 `VITE_ASSET_BASE_URL` 覆盖。Vercel 构建会读取 `.env.production`；若平台已有同名环境变量，需更新或删除旧值。
+`.env.production` 中的 `VITE_ASSET_BASE_URL` 已留空，工作流也不再设置默认 CDN 域名。
 
-开发模式默认使用本地图片。如需开发时也使用 CDN，在 `.env.local` 中设置：
+如需手动启用 CDN，可在构建环境中设置：
 
 ```dotenv
 VITE_ASSET_BASE_URL=https://round-forest-8996.szqmayday.workers.dev
 ```
 
-验证图片地址：`https://round-forest-8996.szqmayday.workers.dev/assets/scene-aaa.png`。首页背景和其余 7 张图片也沿用 `/assets/文件名` 路径。
+GitHub 仓库变量或部署平台环境变量中的同名值会覆盖默认配置。若此前手动设置了 CDN 域名，需要删除或清空该变量以使用本地图片。修改后重新构建部署。
+
+首页背景、四大特性及场景图片统一使用该配置，保留 `/assets/文件名` 路径。
 
 ## 初次上传参考
 

@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_ASSET_BASE_URL: ${{ vars.VITE_ASSET_BASE_URL || 'https://round-forest-8996.szqmayday.workers.dev' }}
+          VITE_ASSET_BASE_URL: ${{ vars.VITE_ASSET_BASE_URL || '' }}
           BASE_PATH: /${{ github.event.repository.name }}/
       - name: Configure Pages
         uses: actions/configure-pages@v5
