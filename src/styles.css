@@ -41,3 +41,96 @@ html,body{max-width:100%;overflow-x:clip}.hero-art{overflow:clip}
 /* Full-width hero image; the inner container keeps text aligned with the page grid. */
 .hero{width:100%;min-height:650px;margin:0;padding:0;border:0;border-radius:0;background-image:linear-gradient(90deg,#070914 0%,#070914e8 32%,#07091488 58%,#07091420 100%),url('/assets/cloud-esports-future-battlefield.png');background-position:center;background-size:cover;background-repeat:no-repeat}.hero-inner{min-height:650px;display:grid;grid-template-columns:minmax(0,540px) 1fr;align-items:center;padding:78px 62px}
 @media(max-width:760px){.hero{min-height:570px;border-radius:0;background-image:linear-gradient(90deg,#070914f2 0%,#070914c9 62%,#0709147a 100%),url('/assets/cloud-esports-future-battlefield.png');background-position:64% center}.hero-inner{min-height:570px;display:grid;grid-template-columns:1fr;padding:88px 22px 62px}}
+
+/* Large image-led game scenarios. */
+.scene-card{min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;background-color:#101526;background-position:center;background-size:cover;background-repeat:no-repeat;isolation:isolate}.scene-card::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#06091a0b 18%,#080b18e8 88%)}.scene-card .scene-number,.scene-card .scene-icon,.scene-card>div{position:relative;z-index:1}.scene-card h3{margin:0 0 10px}.scene-card p{min-height:44px;margin:0 0 7px;color:#e4e9f8;text-shadow:0 2px 12px #000}.scene-card button{color:#fff;font-weight:600}.scene-card .scene-icon{filter:drop-shadow(0 2px 7px #000)}
+@media(max-width:760px){.scene-card{min-height:330px;background-position:center}.scene-card p{min-height:0}.scene-card .scene-icon{top:21px;right:21px}}
+
+/* Wide image strips preserve the composition of the supplied landscape artwork. */
+.scene-showcase{grid-template-columns:1fr;gap:22px}.scene-showcase .scene-card{min-height:370px;padding:32px 40px;background-position:center;justify-content:flex-end}.scene-showcase .scene-card::before{background:linear-gradient(90deg,#070914ed 0%,#070914b7 37%,#07091420 72%),linear-gradient(0deg,#070914b0 0%,transparent 52%)}.scene-showcase .scene-number{top:30px;left:40px;color:#c5caff;font-size:13px}.scene-showcase .scene-icon{top:27px;right:38px}.scene-showcase .scene-content{width:min(470px,52%)}.scene-showcase .scene-content h3{font-size:30px;letter-spacing:-1px}.scene-showcase .scene-content p{font-size:15px;line-height:1.8;min-height:0;margin:0 0 11px}.scene-showcase .scene-content button{font-size:14px}
+@media(max-width:760px){.scene-showcase{gap:14px}.scene-showcase .scene-card{min-height:385px;padding:25px 23px;background-position:center}.scene-showcase .scene-card::before{background:linear-gradient(180deg,#07091430 0%,#070914e8 78%)}.scene-showcase .scene-number{top:22px;left:23px}.scene-showcase .scene-icon{top:19px;right:21px}.scene-showcase .scene-content{width:100%}.scene-showcase .scene-content h3{font-size:25px}.scene-showcase .scene-content p{font-size:13px;line-height:1.7}}
+
+/* The scenario icon is decorative and must not take space in the title flow. */
+.scene-card .scene-icon{position:absolute;top:23px;right:23px;z-index:1}.scene-card>div{position:relative;z-index:1}
+@media(max-width:760px){.scene-card .scene-icon{top:21px;right:21px}}
+
+/* Separate the full-width hero from the client-download block. */
+.download-section{padding-top:78px}
+@media(max-width:760px){.download-section{padding-top:46px}}
+
+/* Four illustrated benefits preserve the full landscape artwork. */
+.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.feature-visual{padding:0;overflow:hidden;min-width:0}
+.feature-media{aspect-ratio:1672/941;position:relative;overflow:hidden;background:#10162c}
+.feature-media>img{width:100%;height:100%;display:block;object-fit:contain}
+.feature-copy{padding:22px 26px 28px}
+.feature-caption{display:block;color:#a39bff;font-size:11px;letter-spacing:1px;margin-bottom:12px}
+.feature-copy h3{font-size:22px;line-height:1.5;margin-bottom:8px}
+.feature-copy p{font-size:14px}
+@media(max-width:760px){.feature-grid{grid-template-columns:1fr;gap:16px}.feature-copy{padding:19px 22px 23px}.feature-copy h3{font-size:20px}.feature-copy p{font-size:13px}}
+
+/* Footer groups keep support and legal information easy to find. */
+.site-footer{display:block;padding:48px 0 22px;background:#090c18;border-top:1px solid #ffffff12}
+.footer-main{display:grid;grid-template-columns:1.6fr repeat(4,minmax(0,1fr));gap:28px;padding-bottom:35px}
+.footer-intro p{margin:15px 0 12px;font-size:12px;line-height:1.8;color:#939cb6}
+.footer-tagline{font-size:11px;color:#777f9b;letter-spacing:2px}
+.footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:13px;min-width:0}
+.footer-column h3{font-size:13px;color:#e2e7f6;margin:3px 0 6px;font-weight:600}
+.footer-column a,.footer-column>span{font-size:12px;line-height:1.7;color:#939cb6;text-decoration:none;overflow-wrap:anywhere}
+.footer-column a>span{display:block;color:#bfc6dc}
+.footer-column a:hover,.footer-registration a:hover{color:#bdb6ff}
+.footer-column .footer-pending{color:#707991}
+.footer-bottom{border-top:1px solid #ffffff0e;padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.footer-bottom small{width:auto;font-size:10px;color:#707991}
+.footer-registration{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:11px;color:#858da0}
+.footer-registration a{color:inherit;text-decoration:none}
+.site-footer a:focus-visible{outline:2px solid #a39bff;outline-offset:5px;border-radius:2px}
+@media(max-width:1000px){.footer-main{grid-template-columns:repeat(4,minmax(0,1fr));gap:26px}.footer-intro{grid-column:1/-1}}
+@media(max-width:760px){.site-footer{padding:34px 0 22px}.footer-main{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 20px;padding-bottom:28px}.footer-bottom{align-items:flex-start;flex-direction:column}.footer-column{gap:11px}}
+
+/* Consistent configuration rows make the three tiers directly comparable. */
+.plan-grid{align-items:stretch;gap:22px}
+.plan-card,.plan-card.featured{padding:30px 26px;display:flex;flex-direction:column;min-width:0}
+.plan-card.featured{border-color:#9489ff;box-shadow:0 0 0 1px #8b7fff30,0 20px 50px #5141be33}
+.popular{display:flex;align-items:center;gap:6px;padding:6px 15px}
+.plan-head h3{margin-bottom:9px}
+.plan-head p{font-size:12px;line-height:1.7;color:#a0a9c3;margin:0 0 23px;min-height:41px}
+.plan-specs{margin:12px 0 22px}
+.plan-spec-row{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:baseline;border-bottom:1px solid #ffffff0b;padding:13px 0;font-size:13px;line-height:1.6}
+.plan-spec-row dt{color:#8993ae}
+.plan-spec-row dd{margin:0;color:#e0e6f8;text-align:right;overflow-wrap:anywhere;font-weight:500}
+.plan-spec-row .spec-pending{color:#79839f;font-weight:400}
+.featured .plan-spec-row dd:not(.spec-pending){color:#d6d1ff}
+.plan-games{margin-bottom:25px}
+.plan-games h4{font-size:12px;font-weight:500;color:#939db7;margin:0 0 12px}
+.plan-games>div{display:flex;flex-wrap:wrap;gap:8px}
+.plan-games span{padding:5px 10px;border-radius:6px;border:1px solid #ffffff10;background:#ffffff05;color:#b4bfd6;font-size:11px}
+.featured .plan-games span{background:#9489ff12;border-color:#9489ff35;color:#d4ceff}
+.plan-card .plan-button{margin-top:auto;min-height:46px}
+.plans-note{text-align:center;color:#7f89a4;font-size:12px;line-height:1.8;margin:23px auto 0;max-width:680px}
+@media(max-width:760px){.plan-grid{gap:26px}.plan-card,.plan-card.featured{padding:28px 24px}.plan-head p{min-height:0}.plans-note{text-align:left}}
+
+/* Billing rules take priority over the compact illustrative timer. */
+.billing-section{grid-template-columns:minmax(0,1fr) 250px;gap:44px;padding:44px;align-items:start}
+.billing-copy h2{font-size:clamp(26px,3vw,36px)}
+.billing-rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 26px;margin-top:28px}
+.billing-rule{display:flex;gap:12px;align-items:flex-start}
+.billing-rule-number{font:12px 'DM Mono',monospace;color:#a39bff;padding-top:3px}
+.billing-rule h3{font-size:15px;line-height:1.6;margin:0 0 7px;color:#e7ecfa}
+.billing-rule h3 small{display:inline-block;margin-left:8px;padding:2px 6px;border-radius:4px;background:#ffffff08;color:#919bb6;font-size:10px;font-weight:400;vertical-align:middle}
+.billing-rule p{font-size:13px;color:#c3cce1;line-height:1.7;margin:0 0 5px}
+.billing-rule-detail{font-size:12px;color:#8995b1;line-height:1.8;display:block}
+.billing-copy .billing-verification-note{font-size:11px;color:#7f8aa7;margin:24px 0 0}
+.billing-aside{align-self:center;min-width:0}
+.billing-aside .billing-card{padding:20px;box-shadow:0 10px 25px #0003}
+.billing-aside .bill-top{align-items:center;font-size:11px;gap:8px}
+.billing-aside .bill-top>span{display:flex;align-items:center;gap:5px}
+.billing-aside .bill-top b{color:#909bb7}
+.billing-aside .bill-time{font-size:28px;letter-spacing:-1px;margin:19px 0}
+.billing-aside .bill-line{font-size:11px;gap:8px}
+.billing-aside .bill-line strong{font-size:12px}
+.bill-rate{margin-top:10px}
+.billing-aside .bill-demo-note{display:block;line-height:1.7;margin-top:16px;padding-top:12px;border-top:1px solid #ffffff12;color:#7f8ba7;font-size:10px}
+.billing-aside>.outline-button{width:100%;padding:12px;margin-top:15px;font-size:12px}
+@media(max-width:1000px){.billing-section{padding:32px;gap:28px;grid-template-columns:minmax(0,1fr) 220px}.billing-rules{grid-template-columns:1fr;gap:22px}}
+@media(max-width:760px){.billing-section{grid-template-columns:1fr;padding:28px 23px;gap:26px}.billing-aside{width:100%;max-width:300px}.billing-rule h3{font-size:14px}}
