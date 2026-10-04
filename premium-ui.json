@@ -1,0 +1,13 @@
+{
+  "profile": "marketing",
+  "sourceRoots": [
+    "src"
+  ],
+  "locale": "zh-CN",
+  "requiredCommands": [
+    "npm run build"
+  ],
+  "commands": {
+    "npm run build": "npm run build"
+  }
+}

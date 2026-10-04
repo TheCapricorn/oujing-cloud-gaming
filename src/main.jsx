@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
-  Apple, ArrowRight, Check, ChevronDown, Clock3, Cloud, Crosshair,
+  Apple, ArrowRight, ChevronDown, Clock3, Cloud, Crosshair,
   Gamepad2, Globe2, Headphones, Menu, Monitor, MousePointer2,
   ShieldCheck, Smartphone, Sparkles, X, Zap
 } from 'lucide-react'
@@ -37,11 +37,13 @@ const scenes = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [notice, setNotice] = useState(false)
+  const downloadDialog = useRef(null)
+  const menuTrigger = useRef(null)
+  const dialogAcknowledgment = useRef(null)
+  const download = () => { setMenuOpen(false); downloadDialog.current?.showModal(); dialogAcknowledgment.current?.focus() }
   const [activeSection, setActiveSection] = useState('features')
-  const download = () => { setNotice(true); window.setTimeout(() => setNotice(false), 3200) }
   const nav = [['产品优势', 'features'], ['云端套餐', 'plans'], ['应用场景', 'scenes'], ['计费说明', 'billing'], ['新手指南', 'guide']]
-  const go = (id) => { setActiveSection(id); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setMenuOpen(false) }
+  const go = (id) => { setActiveSection(id); document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); setMenuOpen(false) }
 
   useEffect(() => {
     const sections = nav.map(([, id]) => document.getElementById(id)).filter(Boolean)
@@ -55,13 +57,15 @@ function App() {
 
   return <div className="site-shell">
     <div className="ambient ambient-one" /><div className="ambient ambient-two" />
-    <header className="navbar">
+    <a className="skip-link" href="#main-content">跳到主要内容</a>
+    <header className="navbar" onKeyDown={event => { if (event.key === 'Escape' && menuOpen) { setMenuOpen(false); menuTrigger.current?.focus() } }}>
       <button className="brand" onClick={() => go('top')} aria-label="回到首页"><span className="brand-mark"><Zap size={18} fill="currentColor" /></span><span>欧竞<span>云电竞</span></span></button>
-      <nav className={menuOpen ? 'nav-links open' : 'nav-links'}>{nav.map(([label, id]) => <button className={activeSection === id ? 'active' : ''} key={id} onClick={() => go(id)}>{label}</button>)}</nav>
-      <div className="nav-actions"><button className="download compact" onClick={download}>下载客户端 <ArrowRight size={15} /></button><button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="切换菜单">{menuOpen ? <X /> : <Menu />}</button></div>
+      <nav id="primary-navigation" aria-label="主导航" onKeyDown={event => { if (event.key === 'Escape') { setMenuOpen(false); menuTrigger.current?.focus() } }} className={menuOpen ? 'nav-links open' : 'nav-links'}>{nav.map(([label, id]) => <a className={activeSection === id ? 'active' : ''} aria-current={activeSection === id ? 'location' : undefined} key={id} href={'#' + id} onClick={() => setMenuOpen(false)}>{label}</a>)}</nav>
+      <div className="nav-actions"><button className="download compact" onClick={download}>下载客户端 <ArrowRight size={15} /></button><button ref={menuTrigger} aria-expanded={menuOpen} aria-controls="primary-navigation" className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? '关闭菜单' : '打开菜单'}>{menuOpen ? <X /> : <Menu />}</button></div>
     </header>
 
-    <main id="top">
+    <main id="main-content" tabIndex={-1}>
+      <span id="top" />
       <section className="hero" style={{ '--hero-image': `url("${assetUrl('/assets/cloud-esports-future-battlefield.png')}")` }}>
         <div className="hero-inner section">
           <div className="hero-copy">
@@ -122,7 +126,7 @@ function App() {
         </aside>
       </section>
 
-      <section id="guide" className="section block-section guide-section"><div className="section-heading"><span className="section-kicker">GET STARTED</span><h2>四步，进入你的游戏宇宙</h2></div><div className="steps">{[['01', '下载客户端', '覆盖 Windows、macOS、iOS、Android'], ['02', '注册欧竞账号', '新用户即可领取体验时长'], ['03', '选择心仪游戏', '海量游戏，一键启动云端主机'], ['04', '即刻开始畅玩', '连接成功，马上投入战斗']].map(([num, title, text], i) => <div className="step" key={num}><span>{num}</span>{i < 3 && <i />}<MousePointer2 size={21} /><h3>{title}</h3><p>{text}</p></div>)}</div><button className="download large final-cta" onClick={download}>现在就开始 <ArrowRight size={18} /></button></section>
+      <section id="guide" className="section block-section guide-section"><div className="section-heading"><span className="section-kicker">GET STARTED</span><h2>四步，进入你的游戏宇宙</h2></div><div className="steps">{[['01', '下载客户端', '查看 Windows、macOS、Android 与网页版'], ['02', '注册欧竞账号', '客户端开放后，按页面提示创建账号'], ['03', '选择心仪游戏', '海量游戏，一键启动云端主机'], ['04', '即刻开始畅玩', '连接成功，马上投入战斗']].map(([num, title, text], i) => <div className="step" key={num}><span>{num}</span>{i < 3 && <i />}<MousePointer2 size={21} /><h3>{title}</h3><p>{text}</p></div>)}</div><button className="download large final-cta" onClick={download}>现在就开始 <ArrowRight size={18} /></button></section>
     </main>
     <footer className="site-footer">
       <div className="footer-main section">
@@ -134,7 +138,15 @@ function App() {
       </div>
       <div className="footer-bottom section"><small>© 2026 OUJING CLOUD GAMING. All rights reserved.</small><div className="footer-registration">{footerInfo.operatorName && <span>{footerInfo.operatorName}</span>}{[footerInfo.icp, footerInfo.publicSecurity].filter(Boolean).map(({ number, href }) => <a key={number} href={href} target="_blank" rel="noopener noreferrer">{number}</a>)}</div></div>
     </footer>
-    {notice && <div className="toast"><Check size={18} /> 下载通道即将开放，敬请期待！</div>}
+    <dialog ref={downloadDialog} className="download-dialog" aria-labelledby="download-title" aria-describedby="download-description" onClick={event => { if (event.target === event.currentTarget) downloadDialog.current.close() }}>
+      <div className="dialog-heading"><span className="brand-mark"><Cloud size={20} /></span><button className="dialog-close" aria-label="关闭下载说明" onClick={() => downloadDialog.current.close()}><X size={22} /></button></div>
+      <span className="availability-label">客户端尚未开放</span>
+      <h2 id="download-title">下载通道准备中</h2>
+      <p id="download-description">目前尚未提供官方下载地址或体验入口。开放后，你可以在这里选择设备并下载客户端。</p>
+      <div className="availability-platforms"><span><Monitor size={18} /> Windows</span><span><Apple size={18} /> macOS</span><span><Smartphone size={18} /> Android</span><span><Globe2 size={18} /> 网页版</span></div>
+      <p className="dialog-note">套餐按钮仅展示套餐信息，当前不会下单或扣费。</p>
+      <button ref={dialogAcknowledgment} className="download dialog-action" onClick={() => downloadDialog.current.close()}>知道了</button>
+    </dialog>
   </div>
 }
 
